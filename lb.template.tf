@@ -63,16 +63,3 @@ resource "aws_lb_listener_rule" "listener_rule" {
     }
   }
 }
-
-# The load balancer DNS name
-output "lb_dns" {
-  value = data.aws_alb.main.dns_name
-}
-
-output "lb_arn" {
-  value = data.aws_alb.main.arn
-}
-
-output "lb_zone_id" {
-  value = data.aws_alb.main.zone_id
-}
