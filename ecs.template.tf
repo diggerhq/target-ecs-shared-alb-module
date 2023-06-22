@@ -133,6 +133,7 @@ resource "aws_ecs_service" "app" {
   launch_type                       = var.launch_type
   task_definition                   = aws_ecs_task_definition.app.arn
   desired_count                     = var.ecs_autoscale_min_instances
+  tags                              = var.tags
 
   network_configuration {
     security_groups  = concat([aws_security_group.ecs_task_sg.id], var.service_security_groups)
@@ -188,7 +189,7 @@ resource "aws_iam_role" "ecs_task_role" {
   ]
 }
 EOF
-
+  tags = var.tags
 }
 
 resource "aws_iam_policy" "ecs_task_execution_policy" {

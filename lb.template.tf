@@ -4,7 +4,7 @@
 # but you need at least one
 
 
-data "aws_alb" "main" {
+data "aws_alb" "shared_alb" {
   arn = var.alb_arn
 }
 
@@ -40,6 +40,7 @@ data "aws_lb_listener" "listener" {
 
 resource "aws_lb_listener_rule" "listener_rule" {
   listener_arn = data.aws_lb_listener.listener.arn
+  tags = var.tags
 
   action {
     type             = "forward"
