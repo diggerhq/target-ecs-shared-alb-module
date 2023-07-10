@@ -130,7 +130,7 @@ resource "aws_ecs_task_definition" "app" {
 resource "aws_ecs_service" "app" {
   name                              = var.ecs_service_name
   {% if shared_ecs_cluster is defined and shared_ecs_cluster %}
-    cluster                          = data.ecs_cluster.id
+    cluster                          = data.aws_ecs_cluster.ecs_cluster.id
   {% else %}
     cluster                          = aws_ecs_cluster.ecs_cluster.id
   {% endif %}
