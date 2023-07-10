@@ -162,7 +162,7 @@ resource "aws_ecs_service" "app" {
 
 # https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name               = "${var.ecs_cluster_name}-task-exec-role"
+  name               = "${var.ecs_service_name}-task-exec-role"
   assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
 }
 
