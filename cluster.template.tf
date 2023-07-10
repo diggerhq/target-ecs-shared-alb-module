@@ -1,6 +1,6 @@
 {% if shared_ecs_cluster is defined and shared_ecs_cluster %}
   data "aws_ecs_cluster" "ecs_cluster" {
-    cluster_name = "{{shared_ecs_cluster_name}}"
+    cluster_name = var.ecs_cluster_name
   }
 {% else %}
 resource "aws_ecs_cluster" "ecs_cluster" {
@@ -14,5 +14,5 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 {% endif %}
 
 output "ecs_cluster_name" {
-  value = "{{shared_ecs_cluster_name}}"
+  value = var.ecs_cluster_name
 }
