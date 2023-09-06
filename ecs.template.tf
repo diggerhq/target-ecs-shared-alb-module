@@ -154,6 +154,14 @@ resource "aws_ecs_service" "app" {
   }
   {% endif %}
 
+  {% if capacity_provider_strategy_is_fargate_spot %}
+
+  capacity_provider_strategy {
+    capacity_provider = "FARGATE_SPOT"
+    weight = 1
+  }
+  {% endif %}
+
   # workaround for https://github.com/hashicorp/terraform/issues/12634
   #depends_on = [aws_alb_listener.]
 }
