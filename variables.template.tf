@@ -134,16 +134,6 @@ variable "listener_rule_http_header_value" {
 
 variable "listener_arn" {}
 
-
-
-# The port the container will listen on, used for load balancer health check
-# Best practice is that this value is higher than 1024 so the container processes
-# isn't running at root.
-
-variable "launch_type" {
-  default = "FARGATE"
-}
-
 # The minimum number of containers that should be running.
 # Must be at least 1.
 # used by both autoscale-perf.tf and autoscale.time.tf

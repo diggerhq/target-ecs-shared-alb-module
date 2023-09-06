@@ -27,7 +27,6 @@ resource "aws_appautoscaling_target" "app_scale_target" {
 
 resource "aws_ecs_task_definition" "app" {
   family                   = var.ecs_service_name
-  requires_compatibilities = [var.launch_type]
   network_mode             = "awsvpc"
   cpu                      = var.task_cpu
   memory                   = var.task_memory
@@ -135,7 +134,6 @@ resource "aws_ecs_service" "app" {
     cluster                          = aws_ecs_cluster.ecs_cluster.id
   {% endif %}
 
-  launch_type                       = var.launch_type
   task_definition                   = aws_ecs_task_definition.app.arn
   desired_count                     = var.ecs_autoscale_min_instances
   tags                              = var.tags
